@@ -1,11 +1,16 @@
 #include "KsiazkaAdresowa.h"
 
+KsiazkaAdresowa::KsiazkaAdresowa()
+{
+    nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
+}
+
 void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
-    //dopiszUzytkownikaDoPliku(uzytkownik);
+    dopiszUzytkownikaDoPliku(uzytkownik);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
@@ -20,7 +25,7 @@ Uzytkownik KsiazkaAdresowa::podajDaneNowegoUzytkownika()
 
     do
     {
-        cout << endl << "Podaj login: ";
+        cout << "Podaj login: ";
         cin >> login ;
         uzytkownik.ustawLogin(login);
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
@@ -52,18 +57,68 @@ bool KsiazkaAdresowa::czyIstniejeLogin(string login)
         }
     }
     return false;
-    /*
-    vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
-    while (itr != uzytkownicy.end())
+
+}
+
+ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
+ {
+     for (int i = 0; i < uzytkownicy.size(); i++)
+     {
+         cout << uzytkownicy[i].pobierzId() << endl;
+         cout << uzytkownicy[i].pobierzLogin() << endl;
+         cout << uzytkownicy[i].pobierzHaslo() << endl;
+     }
+ }
+
+
+ void KsiazkaAdresowa::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik)
+{
+    fstream plikTekstowy;
+    string liniaZDanymiUzytkownika = "";
+    plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
+
+    if (plikTekstowy.good() == true)
     {
-        if (itr -> pobierzLogin() == login)
+        liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
+
+        if (czyPlikJestPusty(plikTekstowy) == true)
         {
-            cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
-            return true;
+            plikTekstowy << liniaZDanymiUzytkownika;
         }
         else
-            itr++;
+        {
+            plikTekstowy << endl << liniaZDanymiUzytkownika ;
+        }
     }
-    return false;
-    */
+    else
+        cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
+    plikTekstowy.close();
+}
+
+string KsiazkaAdresowa::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
+{
+    string liniaZDanymiUzytkownika = "";
+
+    liniaZDanymiUzytkownika += konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
+    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
+    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
+
+    return liniaZDanymiUzytkownika;
+}
+
+string KsiazkaAdresowa::konwerjsaIntNaString(int liczba)
+{
+    ostringstream ss;
+    ss << liczba;
+    string str = ss.str();
+    return str;
+}
+
+bool KsiazkaAdresowa::czyPlikJestPusty(fstream &plikTekstowy)
+{
+    plikTekstowy.seekg(0, ios::end);
+    if (plikTekstowy.tellg() == 0)
+        return true;
+    else
+        return false;
 }
