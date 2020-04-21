@@ -32,6 +32,8 @@ public:
 
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void usunAdresata();
+    int podajIdWybranegoAdresata();
 };
 
 
