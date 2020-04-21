@@ -1,0 +1,8 @@
+1|1|Boguslaw|Linda|777333111|boguslaw@linda.pl|ul. Lotnikow 3a, Warszawa|
+2|1|Radoslaw|Pazura|666333111|radoslaw@pazura.pl|ul. 3 maja 3a, Lodz|
+3|2|Maciej|Stuhr|111222888|maciej@stuhr.pl|ul. Wesola 1, Krakow|
+4|2|Adam|Woronowicz|333111888|adam@woronowicz.pl|ul. Zakonna 5, Bialystok|
+5|1|Jakub|Gierszal|444222777|jakub@gierszal.pl|ul. Zwycieska 4, Warszawa|
+6|1|fgdgd|gdfgd|45345|hfg|gdf|
+7|2|Marcin|Kepka|515534440|gd@o2.pl|reda lakowa 23 10|
+8|2|Fgfd|Gfd|gfd|gdf|gfd|
