@@ -1,5 +1,4 @@
-3|2|Maciej|Drwal|111222888|maciej@drwal.pl|ul. Wesola 1, Krakow|
-4|2|Adam|Woronowicz|333111888|adam@woronowicz.pl|ul. Zakonna 5, Bialystok|
+3|2|George|Drwal|111222888|maciej@drwal.pl|ul. Wesola 1, Krakow|
 5|1|Jakub|Gierszal|444222777|jakub@gierszal.pl|ul. Zwycieska 4, Warszawa|
 6|1|Janusz|Klocek|3423423|gdgd|34534|
 7|2|Maciej|Bdka|423423|gsgsg@gsdmg.com|342 fsdf ul fsfs|
