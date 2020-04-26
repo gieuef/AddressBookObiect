@@ -38,6 +38,9 @@ public:
     char wybierzOpcjeZMenuUzytkownika();
     bool czyUzytkownikJestZalogowany();
     void usunAdresata();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void edytujAdresata();
 
 };
 
